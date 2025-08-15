@@ -23,10 +23,12 @@ In many South Afican households and student groups, groceries are bought as a te
 ---
 
 ## Live Demo
-Check it out here: [TrolleySplit](https://yourusername.github.io/trolleysplit/)
+Check it out here: https://coderofchrist12.github.io/trolleysplit/
+
 
 ---
 
 ## License
 All rights reserved. 
+
 You may not copy, reuse, or publish this code without my permission.
