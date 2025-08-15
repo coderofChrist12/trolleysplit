@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>TrolleySplit Login</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header>
+<h1>TrolleySplit Login</h1>
+<p>Sign in to access your grocery lists</p>
+</header>
+
+<main>
+<section>
+<h2>👤Login</h2>
+<div class="row">
+<input type="text" id="loginUser" placeholder="Username" />
+<input type="password" id="loginPass" placeholder="Password" />
+</div>
+<div class="row">
+<button onclick="login()">Login</button>
+</div>
+</section>
+</main>
+
+<div id="toast"></div>
+
+<script>
+function toast(msg) {
+var t = document.getElementById("toast");
+t.textContent = msg;
+t.className = "show";
+setTimeout(() => t.className = t.className.replace("show",""), 2200);
+}
+
+function login() {
+const username = document.getElementById("loginUser").value.trim();
+const password = document.getElementById("loginPass").value.trim();
+
+
+if(username === "user" && password === "1234") {
+localStorage.setItem("ts_loggedIn", "true");
+localStorage.setItem("ts_currentUser", username);
+toast("Login successful!");
+setTimeout(() => window.location.href = "index.html", 1000);
+} else {
+toast("Invalid username or password");
+}
+}
+
+if(localStorage.getItem("ts_loggedIn") === "true") {
+window.location.href = "index.html";
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>TrolleySplit</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header>
+<h1>TrolleySplit</h1>
+<p> Split Costs, Save Time.</p>
+<button style="position:absolute; top:16px; right:16px;" onclick="logout()">👤Logout</button>
+</header>
+
+<main>
+
+
+<section>
+<h2>🔍 Filter</h2>
+<label><input type="checkbox" id="filterMyItems" onchange="renderItems()"> Show only my items</label>
+</section>
+
+
+<section>
+<h2>👥 Group & Split</h2>
+
+<div class="row">
+<label><input type="radio" name="splitMode" id="splitEven" checked> Split Evenly</label>
+<label><input type="radio" name="splitMode" id="splitCustom"> Custom Amounts</label>
+</div>
+
+<div class="row">
+<input type="text" id="memberName" placeholder="Member name (e.g. Nqobile)" />
+<input type="number" id="memberAmount" placeholder="Custom amount (only if Custom)" disabled />
+<button onclick="addMember()">Add Member</button>
+</div>
+
+<ul id="memberList"></ul>
+</section>
+
+
+<section>
+<h2>🧾 Grocery List</h2>
+<div class="row">
+<input type="text" id="itemName" placeholder="Item name (e.g. Bread)" />
+<input type="number" id="itemQty" placeholder="Qty" />
+<input type="number" id="itemPrice" placeholder="Price per unit (R)" />
+</div>
+<div class="row">
+<select id="itemCategory">
+<option value="">Category (optional)</option>
+<option>Veg</option>
+<option>Meat</option>
+<option>Toiletries</option>
+<option>Dairy</option>
+<option>Snacks</option>
+<option>Staples</option>
+<option>Other</option>
+</select>
+<button onclick="addItem()">Add Item</button>
+</div>
+
+<ul id="groceryList"></ul>
+</section>
+
+
+<section>
+<h2>📊 Budget Overview</h2>
+
+<div class="row">
+<input type="number" id="totalBudget" placeholder="Total budget (optional)" />
+<button onclick="setBudget()">Set Budget</button>
+<button onclick="clearAll()">Clear All</button>
+</div>
+
+<div class="card">
+<p id="totalCost">🧮 Total Cost: R0.00</p>
+<p id="peopleCount">👫 People: 0</p>
+<p id="sharePerPerson">💵 Share per person: R0.00</p>
+<div id="customBreakdown"></div>
+</div>
+
+<div class="row">
+<button onclick="printList()">Print List</button>
+<button onclick="shareWhatsApp()">Share via WhatsApp</button>
+<button onclick="exportCSV()">Export CSV</button>
+</div>
+</section>
+
+
+<section>
+<h2>💬 Notes</h2>
+<textarea id="notes" rows="5" placeholder="Add notes like: 'Check store specials', 'Nqobile brings oil', 'Collect money Friday'"></textarea>
+<div class="row">
+<button onclick="saveNotes()">Save Notes</button>
+</div>
+</section>
+
+</main>
+
+<footer>
+<p>2025 TrolleySplit | Making grocery costs fair for everyone</p>
+<p>Built by Nqobile P Semela — FNB App Academy 2025</p>
+</footer>
+
+<div id="toast"></div>
+<script src="script.js"></script>
+<script>
+
+if(localStorage.getItem("ts_loggedIn") !== "true") {
+window.location.href = "login.html";
+}
+
+function logout() {
+localStorage.removeItem("ts_loggedIn");
+localStorage.removeItem("ts_currentUser");
+window.location.href = "login.html";
+}
+</script>
+</body>
+</html>
